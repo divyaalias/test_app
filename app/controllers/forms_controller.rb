@@ -1,5 +1,5 @@
 class FormsController < ApplicationController
-  before_action :set_form, only: [:show, :edit, :update, :destroy]
+  before_action :set_form, only: [:show, :edit, :update, :destroy, :preview, :create_answer]
 
   # GET /forms
   # GET /forms.json
@@ -62,6 +62,20 @@ class FormsController < ApplicationController
     end
   end
 
+  def preview
+    @form = Form.find(params[:id])
+  end
+
+  def create_answer
+    if params["answers"]
+      ans = @form.answers.push(params["answers"].to_unsafe_h)
+      @form.update(answers: ans)
+      redirect_to forms_path, notice: 'Form was successfully updated.' 
+    else
+      redirect_to preview_forms_path(id: params[:id])
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_form
@@ -70,6 +84,6 @@ class FormsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def form_params
-      params.require(:form).permit(:form_title, :questionnaires_attributes => [:id, :questions, :field_type])
+      params.require(:form).permit(:form_title,:answers, :questionnaires_attributes => [:id, :questions, :field_type])
     end
 end

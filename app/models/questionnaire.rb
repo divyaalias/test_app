@@ -1,4 +1,4 @@
 class Questionnaire < ApplicationRecord
-	has_one :field
-	accepts_nested_attributes_for :field
+	attr_accessor :option
+	serialize :fields, Hash
 end

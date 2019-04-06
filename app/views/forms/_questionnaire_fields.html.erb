@@ -1,13 +1,28 @@
-
 <fieldset>
-	<div class="form-group row">
-		<div class="col-5">
-    	<%= f.text_field :questions, :class => "form-control", id: "ex3", placeholder: "Untitled Question" %>
-  	</div>
-  	<div class="col-5">
-  		<%= f.select :field_type, %w[text_field text_area dropdown multiplechoice], {}, { class: "custom-select custom-select-sm" } %>  
-  	</div> 
-  	 <%= link_to "remove", '#', class: "remove_fields" %>
-	</div>
-  <%= f.hidden_field :_destroy %>
+  <div class="form-group row">
+    <div class="col-xs-4">
+      <%= f.text_field :questions, :class => "form-control", id: "ex3", placeholder: "Untitled Question" %>
+    </div>
+    <div class="col-xs-3">
+      <%#= f.select :field_type, options_for_select(["Text", "Text area", "Dropdown"]), {}, { class: "form form-group form-control" , id: "select-test" } %> 
+      <%= f.select :field_type, %w[Text Text_area], {}, { class: "form form-group form-control", id: "select-test" } %> 
+    </div> 
+    <%= link_to '#', class: 'btn btn-default remove_fields' do %>
+      <span class="glyphicon glyphicon-remove"></span>
+    <% end %>
+  </div>
 </fieldset>
+
+<script>
+
+  // $(document).ready(function() { $("#option-row").hide(); });
+
+  // $("#select-test").change(function() {
+  //   alert(1);
+  //   var optionVal = $("select option:selected").val(); 
+  //   alert(optionVal);
+  //   if(optionVal == "Dropdown") 
+  //     {$("#option-row").show();} else {$("#option-row").hide()}; 
+  // });
+  
+</script>

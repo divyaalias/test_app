@@ -12,8 +12,9 @@
  *
 
  */
-
+@import "bootstrap-sprockets";
 @import "bootstrap";
+
 
 .nav-tabs > li, .nav-pills > li {
     float:none;
@@ -25,4 +26,9 @@
 .nav-tabs, .nav-pills {
     text-align:center;
 }
+
+.add_dropdown {
+	margin-left: 16px;
+}
+
 

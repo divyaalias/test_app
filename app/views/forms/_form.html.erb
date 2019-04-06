@@ -1,5 +1,5 @@
 <div class="container mt-3">
-  <h2>Forms</h2>
+  <h2>Questionnaire Forms</h2>
   <br>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs">
@@ -7,7 +7,7 @@
        <a href="<%= new_form_path %>" class="nav-link active" >Create Questionnaire</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#response">Response</a>
+      <a class="nav-link" href="<%= forms_path%>">Forms</a>
     </li>
   </ul>
 
@@ -18,9 +18,23 @@
       <%= render 'questionnaire', form: @form %>
     </div>
     <div id="response" class="container tab-pane fade"><br>
-      <h3>Response</h3>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <h3>Forms</h3>
+      
     </div>
   </div>
 </div>
 
+<!-- <script>
+  $(function(){
+      $("#option-row").hide() // try to hide google navigation bar
+   });
+
+  $('select').on('change', function() {
+    var optionVal = $("select option:selected").val(); 
+    if(optionVal == "Dropdown") {$("#option-row").show();} else {$("#option-row").hide()}; //if countryVal is 1 (the diffrent value) 
+  });
+
+  $("#select-test").change(function() {
+     alert('The option with value ' + $(this).val() + ' and text ' + $(this).text() + ' was selected.');
+});
+</script> -->
