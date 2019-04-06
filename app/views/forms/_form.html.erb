@@ -1,0 +1,26 @@
+<div class="container mt-3">
+  <h2>Forms</h2>
+  <br>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+       <a href="<%= new_form_path %>" class="nav-link active" >Create Questionnaire</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#response">Response</a>
+    </li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="questionnaire" class="container tab-pane active"><br>
+      <!-- <h3>Questionnaire</h3> -->
+      <%= render 'questionnaire', form: @form %>
+    </div>
+    <div id="response" class="container tab-pane fade"><br>
+      <h3>Response</h3>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+</div>
+

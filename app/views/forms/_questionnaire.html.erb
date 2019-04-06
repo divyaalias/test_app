@@ -1,0 +1,17 @@
+<%= form_with(model: form, local: true) do |f| %>
+  <div class="form-group row">
+    <div class="col-5">
+      <%= f.text_field :form_title, :class => "form-control", id: "ex3", placeholder: "Please give a title" %>
+    </div>
+  </div>
+  </br>
+
+  <%= f.fields_for :questionnaires do |builder| %>
+    <%= render 'questionnaire_fields', f: builder %>
+  <% end %>
+
+  <div class="actions">
+    <%= link_to_add_fields "Add Field", f, :questionnaires %>
+    <%= f.submit %>
+  </div>
+<% end %>

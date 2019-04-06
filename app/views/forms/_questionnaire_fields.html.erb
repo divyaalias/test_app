@@ -1,0 +1,13 @@
+
+<fieldset>
+	<div class="form-group row">
+		<div class="col-5">
+    	<%= f.text_field :questions, :class => "form-control", id: "ex3", placeholder: "Untitled Question" %>
+  	</div>
+  	<div class="col-5">
+  		<%= f.select :field_type, %w[text_field text_area dropdown multiplechoice], {}, { class: "custom-select custom-select-sm" } %>  
+  	</div> 
+  	 <%= link_to "remove", '#', class: "remove_fields" %>
+	</div>
+  <%= f.hidden_field :_destroy %>
+</fieldset>
