@@ -1,0 +1,25 @@
+<%#= form_tag(model: @form, local: true) do |f| %>
+<%= form_tag create_answer_form_path(params[:id]), :method => :put do |f| %>
+<%#= form_tag('/forms/#{params[:id]}/create_answer', method: :put) do%>
+  <div class="container mt-3">
+    <h2><%= @form.form_title%></h2>
+    <br>
+    <% @form.questionnaires.each do |q| %>
+      <label for="ex1"><%= q.questions%></label>
+      <div class="form-group row">
+        <div class="col-xs-4">
+          <% if (q.field_type.downcase == "text_area") %>
+            <%= text_area_tag "answers[#{q.id}]"%>
+          <% end %>
+          <% if (q.field_type.downcase == "text")%>
+            <%= text_field_tag "answers[#{q.id}]" %>
+          <% end %>
+          <%#= render(q.field_type.downcase + "_field"), f  %>
+        </div>
+  		</div>
+    <% end %>
+    <div class="actions">
+      <%= submit_tag %>
+    </div>
+  </div>
+<% end %>  
