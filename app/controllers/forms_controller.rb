@@ -76,6 +76,13 @@ class FormsController < ApplicationController
     end
   end
 
+  def send_form
+    #UserNotificationMailer.user_order_received_with_phone(order, @term, params['x_recurring_billing_amount']).deliver_now
+    @form = Form.find(params["format"])
+    ApplicationMailer.share_form(params["format"], params["user"]["user_email"]).deliver!
+    redirect_to preview_forms_path(id: params["format"])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_form

@@ -1,4 +1,10 @@
 <%#= form_tag(model: @form, local: true) do |f| %>
+<%= link_to 'Index', forms_path %>
+
+<%= link_to 'Response', @form %>
+<%#= link_to 'Preview', preview_forms_path(id: form) %>
+<%= link_to 'Edit', edit_form_path(@form) %>
+
 <%= form_tag create_answer_form_path(params[:id]), :method => :put do |f| %>
 <%#= form_tag('/forms/#{params[:id]}/create_answer', method: :put) do%>
   <div class="container mt-3">
@@ -20,6 +26,54 @@
     <% end %>
     <div class="actions">
       <%= submit_tag %>
+     <%#= button_to 'SEND', {:controller => "forms", :action => "send_form", :form_id => params["id"], :method=>:post }  %>
+     <%#= button_to "SEND", '#', :remote => true, :form_class => "my_class" %>
+    <!--  <%#= button_to 'Vote', :remote=>true %> -->
+    <%#= link_to 'SEND', "#", :remote => true, class: "sendFrom" %>
+    <a class="send-mail-popup" data-toggle="modal" data-target="#send-Form">Click here</a>
     </div>
   </div>
-<% end %>  
+<% end %> 
+
+<!-- <div class="modal fade" role="dialog" >
+  <div role="tabpanel" class="tab-pane" id="signup"> -->
+<div id="send-Form" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_tag send_form_forms_path(params[:id]) do |f| %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Send form to your friends</h4>
+        </div>
+        <div class="modal-body">
+          <p>Email</p>
+          <p><input type="email" class="form-control" id="emailadr" placeholder="Email" name="user[user_email]" required></p>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button> -->
+          <button type="submit" class="btn btn-default btn-register"> Send Now!</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+        <!-- <div class="form-group col-md-12">
+          <label for="emailadr">Email address <span>*</span></label>
+          <input type="email" class="form-control" id="emailadr" placeholder="Email" name="user[user_email]" required>
+          <div class="help-block with-errors"></div>
+          <button type="submit" class="btn btn-default btn-register"> Send Now!</button>
+        </div>
+      <%# end %>
+    </div>
+  </div> 
+</div> -->
+
+<!-- <script type="text/javascript">
+  $("#send-Form").on('click', function( e ) {
+    //alert(1);
+  });
+</script> -->

@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   resources :forms do
   	collection do
 	    get :preview
+      post :send_form
 		end
 		member do    
     	put :create_answer
+
   	end
   end
 
