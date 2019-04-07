@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_111658) do
   create_table "forms", force: :cascade do |t|
     t.string "form_title"
     t.integer "user_id"
+    t.text "answers"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
