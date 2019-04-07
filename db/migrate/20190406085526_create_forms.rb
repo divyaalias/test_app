@@ -3,7 +3,7 @@ class CreateForms < ActiveRecord::Migration[5.2]
     create_table :forms do |t|
       t.string :form_title
       t.integer :user_id
-
+      t.text :answers
       t.timestamps
     end
   end
