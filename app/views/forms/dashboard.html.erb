@@ -20,7 +20,7 @@
 				          <tr>
 				           <td><%= i%></td>
 				           <td><%= form.form_title %></td>
-				           <td><%= form.user.first_name %> <%= form.user.last_name %> </td>
+				           <td><% if form.user %><%= form.user.first_name %> <%= form.user.last_name %><% end %></td>
 				           <td><%= link_to 'Response', form %>
 				            <%= link_to 'Preview', preview_forms_path(id: form) %>
 				            <%= link_to 'Edit', edit_form_path(form) %>
