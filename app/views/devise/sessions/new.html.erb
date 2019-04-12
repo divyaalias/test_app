@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="card card-container">
+    <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+    <p id="profile-name" class="profile-name-card"></p>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-signin")  do |f| %>
+      <span id="reauth-email" class="reauth-email"></span>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", :placeholder => "Email address" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control", :placeholder => "Password"%>
+      <% if devise_mapping.rememberable? %>
+        <div class="checkbox"">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+      <%= f.submit "Log in", class: "btn btn-lg btn-primary btn-block btn-signin"%>
+    <% end %><!-- /form -->
+    <%= render "devise/shared/links", class: "forgot-password" %>
+  </div><!-- /card-container -->
+</div><!-- /container -->

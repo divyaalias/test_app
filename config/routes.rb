@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :forms do
   	collection do
 	    get :preview
       post :send_form
+      get :dashboard
 		end
 		member do    
     	put :create_answer

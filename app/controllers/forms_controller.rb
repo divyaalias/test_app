@@ -83,6 +83,14 @@ class FormsController < ApplicationController
     redirect_to preview_forms_path(id: params["format"])
   end
 
+  def dashboard
+    if current_user.admin?
+      @forms = Form.all
+    else
+      @forms = Form.where(user_id: current_user.id)
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_form
@@ -91,6 +99,7 @@ class FormsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def form_params
-      params.require(:form).permit(:form_title,:answers, :questionnaires_attributes => [:id, :questions, :field_type])
+      user= current_user.id
+      params.require(:form).permit(:user_id, :form_title,:answers, :questionnaires_attributes => [:id, :questions, :field_type])
     end
 end
