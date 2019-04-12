@@ -1,11 +1,6 @@
-<%#= form_tag(model: @form, local: true) do |f| %>
-<%#= link_to 'Index', forms_path %>
 
-<%#= link_to 'Response', @form %>
-<%#= link_to 'Preview', preview_forms_path(id: form) %>
-<%#= link_to 'Edit', edit_form_path(@form) %>
 <h2 align="center">Preview</h2>
-<%= render 'tab'%>
+<%#= render 'tab'%>
 <%= form_tag create_answer_form_path(params[:id]), :method => :put do |f| %>
 <%#= form_tag('/forms/#{params[:id]}/create_answer', method: :put) do%>
   <div class="container mt-3">
@@ -30,7 +25,8 @@
       <% if params["key"] == "mail"%>
         <%= submit_tag "Save", class: "send-mail-popup btn-primary btn-lg"%>
       <% else %>
-        <a class="send-mail-popup btn-primary btn-lg" data-toggle="modal" data-target="#send-Form">Share Form</a>
+        <a class="send-mail-popup btn-primary btn-lg" data-toggle="modal" data-target="#send-Form">Share form via email</a>
+         <%= link_to 'Edit', edit_form_path(params["id"]), class: "send-mail-popup btn-primary btn-lg" %>
       <% end %>
     </div>
   </div>
@@ -44,7 +40,7 @@
       <%= form_tag send_form_forms_path(params[:id]) do |f| %>
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title">Share form!</h4>
+          <h4 class="modal-title">Share form</h4>
         </div>
         <div class="modal-body">
           <p>Email</p>
