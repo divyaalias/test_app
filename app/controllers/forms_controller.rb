@@ -1,4 +1,5 @@
 class FormsController < ApplicationController
+  before_action :authenticate_user!, :except => [:preview, :create_answer]
   before_action :set_form, only: [:show, :edit, :update, :destroy, :preview, :create_answer]
 
   # GET /forms
@@ -64,6 +65,7 @@ class FormsController < ApplicationController
 
   def preview
     @form = Form.find(params[:id])
+    #redirect_to preview_forms_path(id: params[:id])
   end
 
   def create_answer
