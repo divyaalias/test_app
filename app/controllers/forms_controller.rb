@@ -27,7 +27,9 @@ class FormsController < ApplicationController
   # POST /forms.json
   def create
     @form = Form.new(form_params)
-
+    if @form.user_id.nil?
+      @form.user_id = current_user.id
+    end
     respond_to do |format|
       if @form.save
         format.html { redirect_to preview_forms_path(id: @form.id), notice: 'Form was successfully created.' }
@@ -102,6 +104,6 @@ class FormsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def form_params
       user= current_user.id
-      params.require(:form).permit(:user_id, :form_title,:answers, :questionnaires_attributes => [:id, :questions, :field_type])
+      params.require(:form).permit(:form_title,:answers, :questionnaires_attributes => [:id, :questions, :field_type])
     end
 end
